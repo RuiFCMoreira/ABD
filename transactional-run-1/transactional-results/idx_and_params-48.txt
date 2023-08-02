@@ -1,0 +1,14 @@
+Started!
+Response time per function (s)
+------------------------------
+SearchTitles = 0.02318135805627862
+ViewTitle = 0.011394151816473026
+AddNewTitleToList = 0.2620947966822204
+RateTitle = 0.013349386619554695
+GetWatchListInformation = 0.46286699813939786
+
+Overall metrics
+---------------
+throughput (txn/s) = 284.4291666666667
+response time (s) = 0.16725311563132297
+abort rate (%) = 0.005859689729428827

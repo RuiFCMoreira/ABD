@@ -1,0 +1,115 @@
+mkdir: cannot create directory ‘results’: File exists
+Starting at 17:50:45
+Running tests/40MB_work_mem.test.sql
+Running preparation script
+-- 3
+alter system set work_mem = '40MB';
+ALTER SYSTEM
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+17:51:11 - 40MB_work_mem - query 3 - Run 1 
+Running query
+Took 138036.252ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+17:53:57 - 40MB_work_mem - query 3 - Run 2 
+Running query
+Took 126198.055ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+17:56:30 - 40MB_work_mem - query 3 - Run 3 
+Running query
+Took 126400.097ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+17:59:04 - 40MB_work_mem - query 3_opt - Run 1 
+Running query
+Took 26751.896ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+17:59:57 - 40MB_work_mem - query 3_opt - Run 2 
+Running query
+Took 27441.923ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:00:52 - 40MB_work_mem - query 3_opt - Run 3 
+Running query
+Took 27147.148ms
+Running cleanup script
+alter system set work_mem = '4MB';
+ALTER SYSTEM
+Running tests/tg_genre_title.test.sql
+Running preparation script
+-- 2
+create index tg_genre_title on titlegenre (genre_id,title_id);
+CREATE INDEX
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:02:07 - tg_genre_title - query 2 - Run 1 
+Running query
+Took 22546.218ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:02:55 - tg_genre_title - query 2 - Run 2 
+Running query
+Took 22519.885ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:03:44 - tg_genre_title - query 2 - Run 3 
+Running query
+Took 23072.045ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:04:33 - tg_genre_title - query 2_opt - Run 1 
+Running query
+Took 21135.573ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:05:20 - tg_genre_title - query 2_opt - Run 2 
+Running query
+Took 21278.794ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+18:06:08 - tg_genre_title - query 2_opt - Run 3 
+Running query
+Took 22137.831ms
+Running cleanup script
+drop index tg_genre_title;
+DROP INDEX
+Finished at 18:06:30

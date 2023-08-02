@@ -1,0 +1,196 @@
+mkdir: cannot create directory ‘results’: File exists
+Starting at 14:52:44
+Running tests/q1_vaiors_idx.test.sql
+Running preparation script
+-- 1
+create index akas_id_region_idx on titleAkas (title_id, region);
+CREATE INDEX
+create index userHistory_title_id on userHistory (title_id);
+CREATE INDEX
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:54:03 - q1_vaiors_idx - query 1 - Run 1 
+Running query
+Took 7065.932ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:54:36 - q1_vaiors_idx - query 1 - Run 2 
+Running query
+Took 6868.925ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:55:09 - q1_vaiors_idx - query 1 - Run 3 
+Running query
+Took 7417.125ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:55:43 - q1_vaiors_idx - query 1_opt - Run 1 
+Running query
+Took 7105.351ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:56:17 - q1_vaiors_idx - query 1_opt - Run 2 
+Running query
+Took 7380.411ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:56:50 - q1_vaiors_idx - query 1_opt - Run 3 
+Running query
+Took 6918.582ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:57:24 - q1_vaiors_idx - query 1_opt2 - Run 1 
+Running query
+Took 6919.595ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:57:57 - q1_vaiors_idx - query 1_opt2 - Run 2 
+Running query
+Took 6904.223ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:58:30 - q1_vaiors_idx - query 1_opt2 - Run 3 
+Running query
+Took 6796.800ms
+Running cleanup script
+psql: error: tests/q1_vaiors_idx.cleanup.sql: No such file or directory
+Running tests/q1_varios_params.test.sql
+Running preparation script
+-- 1
+create index akas_id_region_idx on titleAkas (title_id, region);
+psql:tests/q1_varios_params.test.sql:2: ERROR:  relation "akas_id_region_idx" already exists
+create index userHistory_title_id on userHistory (title_id);
+psql:tests/q1_varios_params.test.sql:3: ERROR:  relation "userhistory_title_id" already exists
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:59:03 - q1_varios_params - query 1 - Run 1 
+Running query
+Took 6961.304ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:59:37 - q1_varios_params - query 1 - Run 2 
+Running query
+Took 6807.833ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:00:10 - q1_varios_params - query 1 - Run 3 
+Running query
+Took 6948.281ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:00:43 - q1_varios_params - query 1_opt - Run 1 
+Running query
+Took 6699.760ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:01:16 - q1_varios_params - query 1_opt - Run 2 
+Running query
+Took 6621.587ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:01:49 - q1_varios_params - query 1_opt - Run 3 
+Running query
+Took 6786.319ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:02:22 - q1_varios_params - query 1_opt2 - Run 1 
+Running query
+Took 6604.080ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:02:55 - q1_varios_params - query 1_opt2 - Run 2 
+Running query
+Took 6700.631ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+15:03:28 - q1_varios_params - query 1_opt2 - Run 3 
+Running query
+Took 6717.936ms
+Running cleanup script
+drop index akas_id_region_idx;
+DROP INDEX
+drop index userHistory_title_id;
+DROP INDEX
+alter system set max_parallel_workers_per_gather = 2;
+ALTER SYSTEM
+alter system set work_mem = '4MB';
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Finished at 15:03:35

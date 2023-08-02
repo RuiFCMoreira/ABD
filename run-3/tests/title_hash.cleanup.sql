@@ -1,0 +1,1 @@
+drop index title_hash;

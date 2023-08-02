@@ -1,0 +1,103 @@
+mkdir: cannot create directory ‘transactional-results’: File exists
+Starting at 14:28:36
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.imdbBench:transactional:jar:1.0-SNAPSHOT
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 33, column 21
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 62, column 21
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36morg.imdbBench:transactional[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding transactional 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/imdbBench/transactional/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;34mINFO[m] Compiling 7 source files to /home/imdbBench/transactional/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:2.4:jar[m [1m(default-jar)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.4.1:shade[m [1m(default)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Including com.beust:jcommander:jar:1.82 in the shaded jar.
+[[1;34mINFO[m] Including org.postgresql:postgresql:jar:42.5.3 in the shaded jar.
+[[1;34mINFO[m] Including org.checkerframework:checker-qual:jar:3.5.0 in the shaded jar.
+[[1;34mINFO[m] Dependency-reduced POM written at: /home/imdbBench/transactional/dependency-reduced-pom.xml
+[[1;33mWARNING[m] checker-qual-3.5.0.jar, jcommander-1.82.jar, postgresql-42.5.3.jar, transactional-1.0-SNAPSHOT.jar define 1 overlapping resource: 
+[[1;33mWARNING[m]   - META-INF/MANIFEST.MF
+[[1;33mWARNING[m] maven-shade-plugin has detected that some class files are
+[[1;33mWARNING[m] present in two or more JARs. When this happens, only one
+[[1;33mWARNING[m] single version of the class is copied to the uber jar.
+[[1;33mWARNING[m] Usually this is not harmful and you can skip these warnings,
+[[1;33mWARNING[m] otherwise try to manually exclude artifacts based on
+[[1;33mWARNING[m] mvn dependency:tree -Ddetail=true and the above output.
+[[1;33mWARNING[m] See https://maven.apache.org/plugins/maven-shade-plugin/
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar with /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT-shaded.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  3.002 s
+[[1;34mINFO[m] Finished at: 2023-05-30T14:28:41Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Running preparation script
+ALTER USER postgres WITH PASSWORD 'postgres'
+ALTER ROLE
+Running transactional-tests/parameters.test.sql
+Running preparation script
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "2GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:33:26 - parameters - 16 Clients 
+Took 40.925;0.3908721980365506;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum

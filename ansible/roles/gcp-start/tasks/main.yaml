@@ -1,0 +1,59 @@
+- name: Create server disks
+  google.cloud.gcp_compute_disk:
+    name: instance-disk
+    size_gb: 500
+    source_image: projects/ubuntu-os-cloud/global/images/family/ubuntu-2204-lts
+    zone: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: present
+    type: "pd-ssd"
+  register: disk
+
+- name: Create an server addresses
+  google.cloud.gcp_compute_address:
+    name: instance-address
+    region: "{{ gcp_region }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: present
+  register: address
+
+- name: create a firewall
+  google.cloud.gcp_compute_firewall:
+    name: spark-allow-firewall
+    allowed:
+      - ip_protocol: tcp
+        ports:
+          - '18080' # spark
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: present
+
+- name: Create and run server instances
+  google.cloud.gcp_compute_instance:
+    name: testing-instance
+    machine_type: "custom-8-16384" # 8 cpus - 16 * 1024 MB of memory
+    disks:
+      - auto_delete: 'true'
+        boot: 'true'
+        source: "{{ disk }}"
+    network_interfaces:
+      - access_configs:
+          - name: External NAT
+            nat_ip: "{{ address }}"
+            type: ONE_TO_ONE_NAT
+    scheduling:
+      preemptible: true
+    zone: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    status: RUNNING
+    state: present
+  register: instance
+
+

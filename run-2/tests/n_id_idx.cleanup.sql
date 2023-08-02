@@ -1,0 +1,1 @@
+drop index n_id_idx;

@@ -1,0 +1,13 @@
+--- 
+
+plugin: gcp_compute
+zones:
+  - us-central1-c
+regions:
+  - us-central1
+auth_kind: serviceaccount
+service_account_file: credentials.json
+projects:
+    - spry-framework-382717
+scopes:
+  - https://www.googleapis.com/auth/compute

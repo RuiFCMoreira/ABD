@@ -1,0 +1,1 @@
+drop index name_hash_idx;

@@ -1,0 +1,48 @@
+---
+
+- name: Start GCP instances
+  hosts: localhost
+  connection: local
+  roles:
+    - role: gcp-start
+
+- name: Refresh inventory to ensure new instances exist in inventory
+  hosts: localhost
+  tasks:
+    - ansible.builtin.meta: refresh_inventory
+
+- name: Wait for machine to be ready
+  hosts: all
+  gather_facts: false
+  tasks:
+    - ansible.builtin.wait_for_connection:
+        sleep: 5
+        timeout: 120
+
+- name: Install pip
+  hosts: all
+  become: true
+  tasks:
+  - ansible.builtin.apt:
+      name: python3-pip
+      update_cache: true
+      state: present
+
+- name: Install docker for all hosts
+  hosts: all
+  become: true
+  vars:
+    docker_packages:
+      - "docker-{{ docker_edition }}"
+    pip_install_packages:
+      - name: docker
+      - name: docker-compose
+  roles:
+    - geerlingguy.pip # install docker python library
+    - geerlingguy.docker # install docker
+
+- name: Copy files, install and run postgres and spark
+  hosts: all
+  become: true
+  roles:
+    - role: setup

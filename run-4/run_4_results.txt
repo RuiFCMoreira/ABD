@@ -1,0 +1,230 @@
+mkdir: cannot create directory ‘results’: File exists
+Starting at 11:10:08
+Running tests/q1_vaiors_idx.test.sql
+Running preparation script
+-- 1
+create index akas_id_region_idx on titleAkas (title_id, region);
+CREATE INDEX
+CREATE INDEX idx_titleGenre_title_id_genre_id ON titleGenre (title_id, genre_id);
+CREATE INDEX
+create index userHistory_title_id on userHistory (title_id);
+CREATE INDEX
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:11:58 - q1_vaiors_idx - query 1 - Run 1 
+Running query
+Took 4723.166ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:12:27 - q1_vaiors_idx - query 1 - Run 2 
+Running query
+Took 6582.139ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:13:00 - q1_vaiors_idx - query 1 - Run 3 
+Running query
+Took 6451.908ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:13:32 - q1_vaiors_idx - query 1_opt - Run 1 
+Running query
+Took 6399.342ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:14:04 - q1_vaiors_idx - query 1_opt - Run 2 
+Running query
+Took 6532.478ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:14:37 - q1_vaiors_idx - query 1_opt - Run 3 
+Running query
+Took 6515.208ms
+Running cleanup script
+psql: error: tests/q1_vaiors_idx.cleanup.sql: No such file or directory
+Running tests/q2_varios_idx.test.sql
+Running preparation script
+-- 2
+create index title_hash on title using hash (id);
+CREATE INDEX
+create index tg_title_id on titlegenre (title_id);
+CREATE INDEX
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:15:41 - q2_varios_idx - query 2 - Run 1 
+Running query
+Took 24789.060ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:16:31 - q2_varios_idx - query 2 - Run 2 
+Running query
+Took 24887.622ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:17:22 - q2_varios_idx - query 2 - Run 3 
+Running query
+Took 20502.246ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:18:09 - q2_varios_idx - query 2_opt - Run 1 
+Running query
+Took 23651.218ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:18:58 - q2_varios_idx - query 2_opt - Run 2 
+Running query
+Took 23078.426ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:19:47 - q2_varios_idx - query 2_opt - Run 3 
+Running query
+Took 23953.023ms
+Running cleanup script
+drop index title_hash ;
+DROP INDEX
+drop  index tg_title_id ;
+DROP INDEX
+alter system set max_parallel_workers_per_gather = 2;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Running tests/q3_varios_idx.test.sql
+Running preparation script
+-- 3
+create index tpc_title_name on titlePrincipalsCharacters (title_id, name_id);
+CREATE INDEX
+create index tp_categoty_id on titlegenre using hash (category_id);
+psql:tests/q3_varios_idx.test.sql:3: ERROR:  column "category_id" does not exist
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+alter system set shared_buffers = '2GB';
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:21:24 - q3_varios_idx - query 3 - Run 1 
+Running query
+Took 122472.478ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:23:53 - q3_varios_idx - query 3 - Run 2 
+Running query
+Took 122103.913ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:26:22 - q3_varios_idx - query 3 - Run 3 
+Running query
+Took 121228.044ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:28:50 - q3_varios_idx - query 3_opt - Run 1 
+Running query
+Took 16723.135ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:29:34 - q3_varios_idx - query 3_opt - Run 2 
+Running query
+Took 16371.973ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+11:30:17 - q3_varios_idx - query 3_opt - Run 3 
+Running query
+Took 16645.043ms
+Running cleanup script
+drop index tpc_title_name;
+DROP INDEX
+drop index tp_categoty_id;
+psql:tests/q3_varios_idx.cleanup.sql:2: ERROR:  index "tp_categoty_id" does not exist
+alter system set work_mem = '4MB';
+ALTER SYSTEM
+alter system set max_parallel_workers_per_gather = 2;
+ALTER SYSTEM
+alter system set shared_buffers = '128MB';
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Finished at 11:30:34

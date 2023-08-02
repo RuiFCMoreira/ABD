@@ -1,0 +1,636 @@
+mkdir: cannot create directory ‘transactional-results’: File exists
+Starting at 14:15:56
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.imdbBench:transactional:jar:1.0-SNAPSHOT
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 33, column 21
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 62, column 21
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36morg.imdbBench:transactional[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding transactional 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/imdbBench/transactional/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;34mINFO[m] Compiling 7 source files to /home/imdbBench/transactional/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:2.4:jar[m [1m(default-jar)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.4.1:shade[m [1m(default)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Including com.beust:jcommander:jar:1.82 in the shaded jar.
+[[1;34mINFO[m] Including org.postgresql:postgresql:jar:42.5.3 in the shaded jar.
+[[1;34mINFO[m] Including org.checkerframework:checker-qual:jar:3.5.0 in the shaded jar.
+[[1;34mINFO[m] Dependency-reduced POM written at: /home/imdbBench/transactional/dependency-reduced-pom.xml
+[[1;33mWARNING[m] checker-qual-3.5.0.jar, jcommander-1.82.jar, postgresql-42.5.3.jar, transactional-1.0-SNAPSHOT.jar define 1 overlapping resource: 
+[[1;33mWARNING[m]   - META-INF/MANIFEST.MF
+[[1;33mWARNING[m] maven-shade-plugin has detected that some class files are
+[[1;33mWARNING[m] present in two or more JARs. When this happens, only one
+[[1;33mWARNING[m] single version of the class is copied to the uber jar.
+[[1;33mWARNING[m] Usually this is not harmful and you can skip these warnings,
+[[1;33mWARNING[m] otherwise try to manually exclude artifacts based on
+[[1;33mWARNING[m] mvn dependency:tree -Ddetail=true and the above output.
+[[1;33mWARNING[m] See https://maven.apache.org/plugins/maven-shade-plugin/
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar with /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT-shaded.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  2.928 s
+[[1;34mINFO[m] Finished at: 2023-05-30T14:16:00Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Running preparation script
+ALTER USER postgres WITH PASSWORD 'postgres'
+ALTER ROLE
+Running transactional-tests/parameters.test.sql
+Running preparation script
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set max_parallel_workers_per_gather = 4;
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "2GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:20:56 - parameters - 8 Clients 
+Took 37.27916666666667;0.21500274998971722;
+Dropping DB
+ERROR:  database "dbdump" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+Creating DB
+ERROR:  database "dbdump" already exists
+Restoring DB
+pg_restore: while PROCESSING TOC:
+pg_restore: from TOC entry 223; 1259 16452 TABLE category postgres
+pg_restore: error: could not execute query: ERROR:  relation "category" already exists
+Command was: CREATE TABLE public.category (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 215; 1259 16396 TABLE genre postgres
+pg_restore: error: could not execute query: ERROR:  relation "genre" already exists
+Command was: CREATE TABLE public.genre (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 224; 1259 16459 TABLE job postgres
+pg_restore: error: could not execute query: ERROR:  relation "job" already exists
+Command was: CREATE TABLE public.job (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 218; 1259 16417 TABLE name postgres
+pg_restore: error: could not execute query: ERROR:  relation "name" already exists
+Command was: CREATE TABLE public.name (
+    id character varying NOT NULL,
+    primary_name character varying,
+    birth_year integer,
+    death_year integer
+);
+
+
+pg_restore: from TOC entry 221; 1259 16438 TABLE nameknownfortitles postgres
+pg_restore: error: could not execute query: ERROR:  relation "nameknownfortitles" already exists
+Command was: CREATE TABLE public.nameknownfortitles (
+    name_id character varying NOT NULL,
+    title_id character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 219; 1259 16424 TABLE nameprimaryprofession postgres
+pg_restore: error: could not execute query: ERROR:  relation "nameprimaryprofession" already exists
+Command was: CREATE TABLE public.nameprimaryprofession (
+    name_id character varying NOT NULL,
+    profession_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 220; 1259 16431 TABLE profession postgres
+pg_restore: error: could not execute query: ERROR:  relation "profession" already exists
+Command was: CREATE TABLE public.profession (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 214; 1259 16389 TABLE title postgres
+pg_restore: error: could not execute query: ERROR:  relation "title" already exists
+Command was: CREATE TABLE public.title (
+    id character varying NOT NULL,
+    title_type character varying,
+    primary_title character varying,
+    original_title character varying,
+    is_adult boolean,
+    start_year integer,
+    end_year integer,
+    runtime_minutes integer
+);
+
+
+pg_restore: from TOC entry 217; 1259 16410 TABLE titleakas postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleakas" already exists
+Command was: CREATE TABLE public.titleakas (
+    title_id character varying NOT NULL,
+    ordering integer NOT NULL,
+    title character varying,
+    region character varying,
+    language character varying
+);
+
+
+pg_restore: from TOC entry 226; 1259 16473 TABLE titlecrew postgres
+pg_restore: error: could not execute query: ERROR:  relation "titlecrew" already exists
+Command was: CREATE TABLE public.titlecrew (
+    title_id character varying NOT NULL,
+    name_id character varying NOT NULL,
+    type character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 227; 1259 16480 TABLE titleepisode postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleepisode" already exists
+Command was: CREATE TABLE public.titleepisode (
+    title_id character varying NOT NULL,
+    parent_title_id character varying,
+    season_number integer,
+    episode_number integer
+);
+
+
+pg_restore: from TOC entry 216; 1259 16403 TABLE titlegenre postgres
+pg_restore: error: could not execute query: ERROR:  relation "titlegenre" already exists
+Command was: CREATE TABLE public.titlegenre (
+    title_id character varying NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 222; 1259 16445 TABLE titleprincipals postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleprincipals" already exists
+Command was: CREATE TABLE public.titleprincipals (
+    title_id character varying NOT NULL,
+    ordering integer NOT NULL,
+    name_id character varying,
+    category_id integer,
+    job_id integer
+);
+
+
+pg_restore: from TOC entry 225; 1259 16466 TABLE titleprincipalscharacters postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleprincipalscharacters" already exists
+Command was: CREATE TABLE public.titleprincipalscharacters (
+    title_id character varying NOT NULL,
+    name_id character varying NOT NULL,
+    name character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 229; 1259 16494 TABLE usergenre postgres
+pg_restore: error: could not execute query: ERROR:  relation "usergenre" already exists
+Command was: CREATE TABLE public.usergenre (
+    user_id integer NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 231; 1259 16506 TABLE userhistory postgres
+pg_restore: error: could not execute query: ERROR:  relation "userhistory" already exists
+Command was: CREATE TABLE public.userhistory (
+    user_id integer NOT NULL,
+    title_id character varying NOT NULL,
+    duration_seen integer NOT NULL,
+    first_seen timestamp without time zone NOT NULL,
+    last_seen timestamp without time zone NOT NULL,
+    rating integer
+);
+
+
+pg_restore: from TOC entry 230; 1259 16499 TABLE userlist postgres
+pg_restore: error: could not execute query: ERROR:  relation "userlist" already exists
+Command was: CREATE TABLE public.userlist (
+    user_id integer NOT NULL,
+    title_id character varying NOT NULL,
+    created_date timestamp without time zone NOT NULL
+);
+
+
+pg_restore: from TOC entry 228; 1259 16487 TABLE users postgres
+pg_restore: error: could not execute query: ERROR:  relation "users" already exists
+Command was: CREATE TABLE public.users (
+    id integer NOT NULL,
+    email character varying NOT NULL,
+    password_hash character varying NOT NULL,
+    name character varying NOT NULL,
+    country_code character varying(2) NOT NULL
+);
+
+
+pg_restore: from TOC entry 3433; 0 16473 TABLE DATA titlecrew postgres
+pg_restore: error: COPY failed for table "titlecrew": ERROR:  duplicate key value violates unique constraint "titlecrew_pkey"
+DETAIL:  Key (title_id, name_id, type)=(tt0000001, nm0005690, director) already exists.
+CONTEXT:  COPY titlecrew, line 1
+pg_restore: from TOC entry 3268; 2606 16479 CONSTRAINT titlecrew titlecrew_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titlecrew" are not allowed
+Command was: ALTER TABLE ONLY public.titlecrew
+    ADD CONSTRAINT titlecrew_pkey PRIMARY KEY (title_id, name_id, type);
+
+
+pg_restore: from TOC entry 3428; 0 16438 TABLE DATA nameknownfortitles postgres
+pg_restore: error: COPY failed for table "nameknownfortitles": ERROR:  duplicate key value violates unique constraint "nameknownfortitles_pkey"
+DETAIL:  Key (name_id, title_id)=(nm0000001, tt0053137) already exists.
+CONTEXT:  COPY nameknownfortitles, line 1
+pg_restore: from TOC entry 3258; 2606 16444 CONSTRAINT nameknownfortitles nameknownfortitles_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "nameknownfortitles" are not allowed
+Command was: ALTER TABLE ONLY public.nameknownfortitles
+    ADD CONSTRAINT nameknownfortitles_pkey PRIMARY KEY (name_id, title_id);
+
+
+pg_restore: from TOC entry 3438; 0 16506 TABLE DATA userhistory postgres
+pg_restore: error: COPY failed for table "userhistory": ERROR:  duplicate key value violates unique constraint "userhistory_pkey"
+DETAIL:  Key (user_id, title_id)=(1, tt4304022) already exists.
+CONTEXT:  COPY userhistory, line 1
+pg_restore: from TOC entry 3278; 2606 16512 CONSTRAINT userhistory userhistory_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "userhistory" are not allowed
+Command was: ALTER TABLE ONLY public.userhistory
+    ADD CONSTRAINT userhistory_pkey PRIMARY KEY (user_id, title_id);
+
+
+pg_restore: from TOC entry 3425; 0 16417 TABLE DATA name postgres
+pg_restore: error: COPY failed for table "name": ERROR:  duplicate key value violates unique constraint "name_pkey"
+DETAIL:  Key (id)=(nm0000001) already exists.
+CONTEXT:  COPY name, line 1
+pg_restore: from TOC entry 3252; 2606 16423 CONSTRAINT name name_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "name" are not allowed
+Command was: ALTER TABLE ONLY public.name
+    ADD CONSTRAINT name_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3426; 0 16424 TABLE DATA nameprimaryprofession postgres
+pg_restore: error: COPY failed for table "nameprimaryprofession": ERROR:  duplicate key value violates unique constraint "nameprimaryprofession_pkey"
+DETAIL:  Key (name_id, profession_id)=(nm0357341, 3) already exists.
+CONTEXT:  COPY nameprimaryprofession, line 1
+pg_restore: from TOC entry 3254; 2606 16430 CONSTRAINT nameprimaryprofession nameprimaryprofession_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "nameprimaryprofession" are not allowed
+Command was: ALTER TABLE ONLY public.nameprimaryprofession
+    ADD CONSTRAINT nameprimaryprofession_pkey PRIMARY KEY (name_id, profession_id);
+
+
+pg_restore: from TOC entry 3435; 0 16487 TABLE DATA users postgres
+pg_restore: error: COPY failed for table "users": ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (id)=(1) already exists.
+CONTEXT:  COPY users, line 1
+pg_restore: pg_restore: from TOC entry 3272; 2606 16493 CONSTRAINT users users_pkey postgres
+pg_restore:from TOC entry 3434; 0 16480 TABLE DATA titleepisode postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "users" are not allowed
+Command was: ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+ error: COPY failed for table "titleepisode": ERROR:  duplicate key value violates unique constraint "titleepisode_pkey"
+DETAIL:  Key (title_id)=(tt0041951) already exists.
+CONTEXT:  COPY titleepisode, line 1
+pg_restore: from TOC entry 3270; 2606 16486 CONSTRAINT titleepisode titleepisode_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titleepisode" are not allowed
+Command was: ALTER TABLE ONLY public.titleepisode
+    ADD CONSTRAINT titleepisode_pkey PRIMARY KEY (title_id);
+
+
+pg_restore: from TOC entry 3436; 0 16494 TABLE DATA usergenre postgres
+pg_restore: error: COPY failed for table "usergenre": ERROR:  duplicate key value violates unique constraint "usergenre_pkey"
+DETAIL:  Key (user_id, genre_id)=(1, 24) already exists.
+CONTEXT:  COPY usergenre, line 1
+pg_restore: from TOC entry 3274; 2606 16498 CONSTRAINT usergenre usergenre_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "usergenre" are not allowed
+Command was: ALTER TABLE ONLY public.usergenre
+    ADD CONSTRAINT usergenre_pkey PRIMARY KEY (user_id, genre_id);
+
+
+pg_restore: from TOC entry 3431; 0 16459 TABLE DATA job postgres
+pg_restore: error: COPY failed for table "job": ERROR:  duplicate key value violates unique constraint "job_pkey"
+DETAIL:  Key (id)=(1) already exists.
+CONTEXT:  COPY job, line 1
+pg_restore: from TOC entry 3427; 0 16431 TABLE DATA profession postgres
+pg_restore: error: COPY failed for table "profession": ERROR:  duplicate key value violates unique constraint "profession_pkey"
+DETAIL:  Key (id)=(1) already exists.
+CONTEXT:  COPY profession, line 1
+pg_restore: from TOC entry 3256; 2606 16437 CONSTRAINT profession profession_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "profession" are not allowed
+Command was: ALTER TABLE ONLY public.profession
+    ADD CONSTRAINT profession_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3264; 2606 16465 CONSTRAINT job job_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "job" are not allowed
+Command was: ALTER TABLE ONLY public.job
+    ADD CONSTRAINT job_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3430; 0 16452 TABLE DATA category postgres
+pg_restore: error: COPY failed for table "category": ERROR:  duplicate key value violates unique constraint "category_pkey"
+DETAIL:  Key (id)=(1) already exists.
+CONTEXT:  COPY category, line 1
+pg_restore: from TOC entry 3262; 2606 16458 CONSTRAINT category category_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "category" are not allowed
+Command was: ALTER TABLE ONLY public.category
+    ADD CONSTRAINT category_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3422; 0 16396 TABLE DATA genre postgres
+pg_restore: error: COPY failed for table "genre": ERROR:  duplicate key value violates unique constraint "genre_pkey"
+DETAIL:  Key (id)=(1) already exists.
+CONTEXT:  COPY genre, line 1
+pg_restore: from TOC entry 3246; 2606 16402 CONSTRAINT genre genre_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "genre" are not allowed
+Command was: ALTER TABLE ONLY public.genre
+    ADD CONSTRAINT genre_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3437; 0 16499 TABLE DATA userlist postgres
+pg_restore: error: COPY failed for table "userlist": ERROR:  duplicate key value violates unique constraint "userlist_pkey"
+DETAIL:  Key (user_id, title_id)=(1, tt5353900) already exists.
+CONTEXT:  COPY userlist, line 1
+pg_restore: from TOC entry 3276; 2606 16505 CONSTRAINT userlist userlist_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "userlist" are not allowed
+Command was: ALTER TABLE ONLY public.userlist
+    ADD CONSTRAINT userlist_pkey PRIMARY KEY (user_id, title_id);
+
+
+pg_restore: from TOC entry 3421; 0 16389 TABLE DATA title postgres
+pg_restore: error: COPY failed for table "title": ERROR:  duplicate key value violates unique constraint "title_pkey"
+DETAIL:  Key (id)=(tt0000001) already exists.
+CONTEXT:  COPY title, line 1
+pg_restore: from TOC entry 3244; 2606 16395 CONSTRAINT title title_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "title" are not allowed
+Command was: ALTER TABLE ONLY public.title
+    ADD CONSTRAINT title_pkey PRIMARY KEY (id);
+
+
+pg_restore: from TOC entry 3423; 0 16403 TABLE DATA titlegenre postgres
+pg_restore: error: COPY failed for table "titlegenre": ERROR:  duplicate key value violates unique constraint "titlegenre_pkey"
+DETAIL:  Key (title_id, genre_id)=(tt0000001, 1) already exists.
+CONTEXT:  COPY titlegenre, line 1
+pg_restore: from TOC entry 3248; 2606 16409 CONSTRAINT titlegenre titlegenre_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titlegenre" are not allowed
+Command was: ALTER TABLE ONLY public.titlegenre
+    ADD CONSTRAINT titlegenre_pkey PRIMARY KEY (title_id, genre_id);
+
+
+pg_restore: from TOC entry 3424; 0 16410 TABLE DATA titleakas postgres
+pg_restore: error: COPY failed for table "titleakas": ERROR:  duplicate key value violates unique constraint "titleakas_pkey"
+DETAIL:  Key (title_id, ordering)=(tt0000001, 1) already exists.
+CONTEXT:  COPY titleakas, line 1
+pg_restore: from TOC entry 3250; 2606 16416 CONSTRAINT titleakas titleakas_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titleakas" are not allowed
+Command was: ALTER TABLE ONLY public.titleakas
+    ADD CONSTRAINT titleakas_pkey PRIMARY KEY (title_id, ordering);
+
+
+pg_restore: from TOC entry 3432; 0 16466 TABLE DATA titleprincipalscharacters postgres
+pg_restore: error: COPY failed for table "titleprincipalscharacters": ERROR:  duplicate key value violates unique constraint "titleprincipalscharacters_pkey"
+DETAIL:  Key (title_id, name_id, name)=(tt0054181, nm0849447, Fina (Seraphina) Yokami) already exists.
+CONTEXT:  COPY titleprincipalscharacters, line 1
+pg_restore: from TOC entry 3266; 2606 16472 CONSTRAINT titleprincipalscharacters titleprincipalscharacters_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titleprincipalscharacters" are not allowed
+Command was: ALTER TABLE ONLY public.titleprincipalscharacters
+    ADD CONSTRAINT titleprincipalscharacters_pkey PRIMARY KEY (title_id, name_id, name);
+
+
+pg_restore: from TOC entry 3429; 0 16445 TABLE DATA titleprincipals postgres
+pg_restore: error: COPY failed for table "titleprincipals": ERROR:  duplicate key value violates unique constraint "titleprincipals_pkey"
+DETAIL:  Key (title_id, ordering)=(tt0000001, 1) already exists.
+CONTEXT:  COPY titleprincipals, line 1
+pg_restore: from TOC entry 3260; 2606 16451 CONSTRAINT titleprincipals titleprincipals_pkey postgres
+pg_restore: error: could not execute query: ERROR:  multiple primary keys for table "titleprincipals" are not allowed
+Command was: ALTER TABLE ONLY public.titleprincipals
+    ADD CONSTRAINT titleprincipals_pkey PRIMARY KEY (title_id, ordering);
+
+
+pg_restore: warning: errors ignored on restore: 90
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+14:26:13 - parameters - 16 Clients 
+Took 
+Dropping DB
+Cancel request sent
+ERROR:  canceling statement due to user request
+Creating DB
+ERROR:  database "dbdump" already exists
+Restoring DB
+pg_restore: while PROCESSING TOC:
+pg_restore: from TOC entry 223; 1259 16452 TABLE category postgres
+pg_restore: error: could not execute query: ERROR:  relation "category" already exists
+Command was: CREATE TABLE public.category (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 215; 1259 16396 TABLE genre postgres
+pg_restore: error: could not execute query: ERROR:  relation "genre" already exists
+Command was: CREATE TABLE public.genre (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 224; 1259 16459 TABLE job postgres
+pg_restore: error: could not execute query: ERROR:  relation "job" already exists
+Command was: CREATE TABLE public.job (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 218; 1259 16417 TABLE name postgres
+pg_restore: error: could not execute query: ERROR:  relation "name" already exists
+Command was: CREATE TABLE public.name (
+    id character varying NOT NULL,
+    primary_name character varying,
+    birth_year integer,
+    death_year integer
+);
+
+
+pg_restore: from TOC entry 221; 1259 16438 TABLE nameknownfortitles postgres
+pg_restore: error: could not execute query: ERROR:  relation "nameknownfortitles" already exists
+Command was: CREATE TABLE public.nameknownfortitles (
+    name_id character varying NOT NULL,
+    title_id character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 219; 1259 16424 TABLE nameprimaryprofession postgres
+pg_restore: error: could not execute query: ERROR:  relation "nameprimaryprofession" already exists
+Command was: CREATE TABLE public.nameprimaryprofession (
+    name_id character varying NOT NULL,
+    profession_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 220; 1259 16431 TABLE profession postgres
+pg_restore: error: could not execute query: ERROR:  relation "profession" already exists
+Command was: CREATE TABLE public.profession (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+pg_restore: from TOC entry 214; 1259 16389 TABLE title postgres
+pg_restore: error: could not execute query: ERROR:  relation "title" already exists
+Command was: CREATE TABLE public.title (
+    id character varying NOT NULL,
+    title_type character varying,
+    primary_title character varying,
+    original_title character varying,
+    is_adult boolean,
+    start_year integer,
+    end_year integer,
+    runtime_minutes integer
+);
+
+
+pg_restore: from TOC entry 217; 1259 16410 TABLE titleakas postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleakas" already exists
+Command was: CREATE TABLE public.titleakas (
+    title_id character varying NOT NULL,
+    ordering integer NOT NULL,
+    title character varying,
+    region character varying,
+    language character varying
+);
+
+
+pg_restore: from TOC entry 226; 1259 16473 TABLE titlecrew postgres
+pg_restore: error: could not execute query: ERROR:  relation "titlecrew" already exists
+Command was: CREATE TABLE public.titlecrew (
+    title_id character varying NOT NULL,
+    name_id character varying NOT NULL,
+    type character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 227; 1259 16480 TABLE titleepisode postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleepisode" already exists
+Command was: CREATE TABLE public.titleepisode (
+    title_id character varying NOT NULL,
+    parent_title_id character varying,
+    season_number integer,
+    episode_number integer
+);
+
+
+pg_restore: from TOC entry 216; 1259 16403 TABLE titlegenre postgres
+pg_restore: error: could not execute query: ERROR:  relation "titlegenre" already exists
+Command was: CREATE TABLE public.titlegenre (
+    title_id character varying NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 222; 1259 16445 TABLE titleprincipals postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleprincipals" already exists
+Command was: CREATE TABLE public.titleprincipals (
+    title_id character varying NOT NULL,
+    ordering integer NOT NULL,
+    name_id character varying,
+    category_id integer,
+    job_id integer
+);
+
+
+pg_restore: from TOC entry 225; 1259 16466 TABLE titleprincipalscharacters postgres
+pg_restore: error: could not execute query: ERROR:  relation "titleprincipalscharacters" already exists
+Command was: CREATE TABLE public.titleprincipalscharacters (
+    title_id character varying NOT NULL,
+    name_id character varying NOT NULL,
+    name character varying NOT NULL
+);
+
+
+pg_restore: from TOC entry 229; 1259 16494 TABLE usergenre postgres
+pg_restore: error: could not execute query: ERROR:  relation "usergenre" already exists
+Command was: CREATE TABLE public.usergenre (
+    user_id integer NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+pg_restore: from TOC entry 231; 1259 16506 TABLE userhistory postgres
+pg_restore: error: could not execute query: ERROR:  relation "userhistory" already exists
+Command was: CREATE TABLE public.userhistory (
+    user_id integer NOT NULL,
+    title_id character varying NOT NULL,
+    duration_seen integer NOT NULL,
+    first_seen timestamp without time zone NOT NULL,
+    last_seen timestamp without time zone NOT NULL,
+    rating integer
+);
+
+
+pg_restore: from TOC entry 230; 1259 16499 TABLE userlist postgres
+pg_restore: error: could not execute query: ERROR:  relation "userlist" already exists
+Command was: CREATE TABLE public.userlist (
+    user_id integer NOT NULL,
+    title_id character varying NOT NULL,
+    created_date timestamp without time zone NOT NULL
+);
+
+
+pg_restore: from TOC entry 228; 1259 16487 TABLE users postgres
+pg_restore: error: could not execute query: ERROR:  relation "users" already exists
+Command was: CREATE TABLE public.users (
+    id integer NOT NULL,
+    email character varying NOT NULL,
+    password_hash character varying NOT NULL,
+    name character varying NOT NULL,
+    country_code character varying(2) NOT NULL
+);
+
+

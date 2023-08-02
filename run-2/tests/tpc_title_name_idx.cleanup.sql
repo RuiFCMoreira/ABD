@@ -1,0 +1,1 @@
+drop index tpc_title_name_idx;

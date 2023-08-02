@@ -1,0 +1,1 @@
+drop index akas_id_region_idx;

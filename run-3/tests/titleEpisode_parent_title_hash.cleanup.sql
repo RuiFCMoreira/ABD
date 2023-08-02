@@ -1,0 +1,1 @@
+drop index te_parent_title_hash;

@@ -1,0 +1,37 @@
+- name: Delete server instances
+  google.cloud.gcp_compute_instance:
+    name: testing-instance
+    zone: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: absent
+  register: instance
+
+- name: Delete an server address
+  google.cloud.gcp_compute_address:
+    name: instance-address
+    region: "{{ gcp_region }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: absent
+  register: address
+
+- name: Delete server disk
+  google.cloud.gcp_compute_disk:
+    name: instance-disk
+    zone: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: absent
+  register: disk
+
+- name: Delete firewall
+  google.cloud.gcp_compute_firewall:
+    name: spark-allow-firewall
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+    state: absent

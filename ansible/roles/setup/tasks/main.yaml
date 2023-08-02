@@ -1,0 +1,115 @@
+---
+- name: "Install apt packages"
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - postgresql
+    - openjdk-17-jdk
+    - maven
+    - unzip
+
+- name: "Start and enable postgres services"
+  ansible.builtin.service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - postgresql
+
+- name: "Copy imdbBench files to remote"
+  ansible.posix.synchronize:
+    src: files/imdbBench
+    dest: /home/
+    mode: push
+    checksum: true
+
+- name: Install pip libraries
+  ansible.builtin.pip:
+    name:
+      - requests
+      - google-auth
+      - google-cloud-storage
+      - pyspark
+
+- name: Copy credentials file
+  ansible.posix.synchronize:
+    src: files/credentials.json
+    dest: .
+    mode: push
+    checksum: true
+
+- name: Check if dump file exists
+  ansible.builtin.stat:
+    path: /home/dump_file
+  register: dump_file_data
+
+- name: Download database dump
+  google.cloud.gcp_storage_object:
+    action: download
+    bucket: abd-dbdump
+    src: dump_file
+    dest: /home/dump_file
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+  when: not dump_file_data.stat.exists
+
+- name: Copy spark files to remote
+  ansible.posix.synchronize:
+    src: files/spark
+    dest: /home/.
+    mode: push
+    checksum: true
+
+- name: Check if parquet zip exists
+  ansible.builtin.stat:
+    path: /home/parquets.zip
+  register: parquets_file_data
+
+- name: Download parquet zip
+  google.cloud.gcp_storage_object:
+    action: download
+    bucket: abd-dbdump
+    src: parquets.zip
+    dest: /home/parquets.zip
+    project: "{{ gcp_project }}"
+    auth_kind: "{{ auth_kind }}"
+    service_account_file: "{{ service_account_file }}"
+  when: not parquets_file_data.stat.exists
+
+- name: Create spark/app directory
+  ansible.builtin.file:
+    path: /home/spark/app
+    state: directory
+    mode: '0777'
+
+- name: Unarchive parquets zip
+  ansible.builtin.unarchive:
+    src: /home/parquets.zip
+    dest: /home/spark/app/
+    remote_src: true
+
+- name: Run compose
+  community.docker.docker_compose:
+    project_name: spark
+    project_src: /home/spark
+    state: present
+    scale:
+      spark-worker: 3
+
+- name: Copy scripts to remote
+  ansible.posix.synchronize:
+    src: files/scripts
+    dest: /home/.
+    mode: push
+    checksum: true
+    rsync_opts:
+      - "--chmod=1777"
+
+- name: Start spark history server
+  community.docker.docker_container_exec:
+    container: spark_spark_1
+    command: start-history-server.sh
+  register: history_server_result
+  failed_when: history_server_result.rc != 0 and "running as process" not in history_server_result.stdout

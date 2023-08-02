@@ -1,0 +1,1 @@
+drop index userHistory_title_id;

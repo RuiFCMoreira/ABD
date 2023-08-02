@@ -1,0 +1,10 @@
+gcp_zone: us-central1-c
+gcp_region: us-central1
+gcp_project: spry-framework-382717
+auth_kind: serviceaccount
+service_account_file: credentials.json
+project: spry-framework-382717
+
+db_user: app1user
+db_password: app1user
+db_name: app1

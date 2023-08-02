@@ -1,0 +1,89 @@
+explain analyze SELECT *
+FROM (
+    SELECT t.id,
+        left(t.primary_title, 30),
+        ((start_year / 10) * 10)::int AS decade,
+        avg(uh.rating) AS rating,
+        rank() over (
+            PARTITION by ((start_year / 10) * 10) :: int
+            ORDER BY avg(uh.rating) DESC, t.id
+        ) AS rank
+    FROM title t
+    JOIN userHistory uh ON uh.title_id = t.id
+    WHERE t.title_type = 'movie'
+        AND ((start_year / 10) * 10)::int >= 1980
+        AND t.id IN (
+            SELECT title_id
+            FROM titleGenre tg
+            JOIN genre g ON g.id = tg.genre_id
+            WHERE g.name IN (
+                'Drama'
+            )
+        )
+        AND t.id IN (
+            SELECT title_id
+            FROM titleAkas
+            WHERE region IN (
+                'US', 'GB', 'ES', 'DE', 'FR', 'PT'
+            )
+        )
+    GROUP BY t.id
+    HAVING count(uh.rating) >= 3
+    ORDER BY decade, rating DESC
+) t_
+WHERE rank <= 10;
+                                                                                                 QUERY PLAN                                                                                                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Subquery Scan on t_  (cost=361189.11..361203.86 rows=116 width=86) (actual time=8671.684..8689.744 rows=50 loops=1)
+   Filter: (t_.rank <= 10)
+   Rows Removed by Filter: 1953
+   ->  WindowAgg  (cost=361189.11..361199.52 rows=347 width=86) (actual time=8671.679..8689.637 rows=2003 loops=1)
+         ->  Sort  (cost=361189.11..361189.98 rows=347 width=66) (actual time=8671.635..8688.070 rows=2003 loops=1)
+               Sort Key: (((t.start_year / 10) * 10)), (avg(uh.rating)) DESC, t.id
+               Sort Method: quicksort  Memory: 228kB
+               ->  Finalize GroupAggregate  (cost=361041.72..361174.47 rows=347 width=66) (actual time=8607.179..8684.201 rows=2003 loops=1)
+                     Group Key: t.id
+                     Filter: (count(uh.rating) >= 3)
+                     Rows Removed by Filter: 40986
+                     ->  Gather Merge  (cost=361041.72..361150.59 rows=868 width=74) (actual time=8607.140..8651.757 rows=53931 loops=1)
+                           Workers Planned: 2
+                           Workers Launched: 2
+                           ->  Partial GroupAggregate  (cost=360041.70..360050.38 rows=434 width=74) (actual time=8587.521..8600.754 rows=17977 loops=3)
+                                 Group Key: t.id
+                                 ->  Sort  (cost=360041.70..360042.78 rows=434 width=38) (actual time=8587.467..8589.876 rows=20226 loops=3)
+                                       Sort Key: t.id
+                                       Sort Method: quicksort  Memory: 2408kB
+                                       Worker 0:  Sort Method: quicksort  Memory: 2403kB
+                                       Worker 1:  Sort Method: quicksort  Memory: 2419kB
+                                       ->  Parallel Hash Join  (cost=270573.67..360022.69 rows=434 width=38) (actual time=6785.800..8562.138 rows=20226 loops=3)
+                                             Hash Cond: ((uh.title_id)::text = (t.id)::text)
+                                             ->  Parallel Seq Scan on userhistory uh  (cost=0.00..80070.27 rows=2500828 width=14) (actual time=0.319..1310.456 rows=2000631 loops=3)
+                                             ->  Parallel Hash  (cost=270570.52..270570.52 rows=252 width=54) (actual time=6785.211..6785.216 rows=27522 loops=3)
+                                                   Buckets: 131072 (originally 1024)  Batches: 1 (originally 1)  Memory Usage: 9080kB
+                                                   ->  Nested Loop Semi Join  (cost=1.26..270570.52 rows=252 width=54) (actual time=64.806..6653.737 rows=27522 loops=3)
+                                                         Join Filter: ((t.id)::text = (tg.title_id)::text)
+                                                         ->  Nested Loop Semi Join  (cost=0.56..260152.16 rows=4570 width=44) (actual time=51.899..5086.791 rows=78788 loops=3)
+                                                               ->  Parallel Seq Scan on title t  (cost=0.00..200427.29 rows=87747 width=34) (actual time=50.795..1866.676 rows=129726 loops=3)
+                                                                     Filter: (((title_type)::text = 'movie'::text) AND (((start_year / 10) * 10) >= 1980))
+                                                                     Rows Removed by Filter: 3143815
+                                                               ->  Index Only Scan using akas_id_region_idx on titleakas  (cost=0.56..4.50 rows=36 width=10) (actual time=0.024..0.024 rows=1 loops=389178)
+                                                                     Index Cond: (title_id = (t.id)::text)
+                                                                     Filter: ((region)::text = ANY ('{US,GB,ES,DE,FR,PT}'::text[]))
+                                                                     Rows Removed by Filter: 1
+                                                                     Heap Fetches: 0
+                                                         ->  Nested Loop  (cost=0.70..2.27 rows=1 width=10) (actual time=0.020..0.020 rows=0 loops=236365)
+                                                               ->  Index Only Scan using titlegenre_pkey on titlegenre tg  (cost=0.56..1.62 rows=4 width=14) (actual time=0.017..0.017 rows=1 loops=236365)
+                                                                     Index Cond: (title_id = (titleakas.title_id)::text)
+                                                                     Heap Fetches: 0
+                                                               ->  Index Scan using genre_pkey on genre g  (cost=0.14..0.16 rows=1 width=4) (actual time=0.001..0.001 rows=0 loops=327381)
+                                                                     Index Cond: (id = tg.genre_id)
+                                                                     Filter: ((name)::text = 'Drama'::text)
+                                                                     Rows Removed by Filter: 1
+ Planning Time: 14.586 ms
+ JIT:
+   Functions: 102
+   Options: Inlining false, Optimization false, Expressions true, Deforming true
+   Timing: Generation 6.948 ms, Inlining 0.000 ms, Optimization 5.505 ms, Emission 141.851 ms, Total 154.305 ms
+ Execution Time: 9049.507 ms
+(51 rows)
+

@@ -1,0 +1,88 @@
+explain analyze SELECT t.id, t.primary_title, tg.genres, te.season_number, count(*) AS views
+FROM title t
+JOIN titleEpisode te ON te.parent_title_id = t.id
+JOIN title t2 ON t2.id = te.title_id
+JOIN userHistory uh ON uh.title_id = t2.id
+JOIN users u ON u.id = uh.user_id
+JOIN (
+    SELECT tg.title_id, array_agg(g.name) AS genres
+    FROM titleGenre tg
+    JOIN genre g ON g.id = tg.genre_id
+    GROUP BY tg.title_id
+) tg ON tg.title_id = t.id
+WHERE t.title_type = 'tvSeries'
+    AND uh.last_seen BETWEEN NOW() - INTERVAL '30 days' AND NOW()
+    AND te.season_number IS NOT NULL
+    AND u.country_code NOT IN ('US', 'GB')
+GROUP BY t.id, t.primary_title, tg.genres, te.season_number
+ORDER BY count(*) DESC, t.id
+LIMIT 100;
+                                                                                                   QUERY PLAN                                                                                                    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=1131642.56..1131642.81 rows=100 width=74) (actual time=22546.155..22546.306 rows=100 loops=1)
+   ->  Sort  (cost=1131642.56..1131649.69 rows=2849 width=74) (actual time=21982.773..21982.916 rows=100 loops=1)
+         Sort Key: (count(*)) DESC, t.id
+         Sort Method: top-N heapsort  Memory: 41kB
+         ->  Finalize GroupAggregate  (cost=116099.05..1131533.68 rows=2849 width=74) (actual time=6833.396..21980.733 rows=6301 loops=1)
+               Group Key: t.id, (array_agg(g.name)), te.season_number
+               ->  Gather Merge  (cost=116099.05..1131481.45 rows=2374 width=74) (actual time=6833.362..21977.162 rows=7050 loops=1)
+                     Workers Planned: 2
+                     Workers Launched: 2
+                     ->  Partial GroupAggregate  (cost=115099.03..1130207.40 rows=1187 width=74) (actual time=6810.963..21246.341 rows=2350 loops=3)
+                           Group Key: t.id, (array_agg(g.name)), te.season_number
+                           ->  Incremental Sort  (cost=115099.03..1130183.66 rows=1187 width=66) (actual time=6810.923..21244.658 rows=2614 loops=3)
+                                 Sort Key: t.id, (array_agg(g.name)), te.season_number
+                                 Presorted Key: t.id
+                                 Full-sort Groups: 84  Sort Method: quicksort  Average Memory: 29kB  Peak Memory: 29kB
+                                 Worker 0:  Full-sort Groups: 81  Sort Method: quicksort  Average Memory: 29kB  Peak Memory: 29kB
+                                 Worker 1:  Full-sort Groups: 80  Sort Method: quicksort  Average Memory: 29kB  Peak Memory: 29kB
+                                 ->  Merge Join  (cost=114243.17..1130130.25 rows=1187 width=66) (actual time=6788.865..21240.615 rows=2614 loops=3)
+                                       Merge Cond: ((te.parent_title_id)::text = (tg.title_id)::text)
+                                       ->  Sort  (cost=114242.47..114242.49 rows=8 width=44) (actual time=6722.022..6723.873 rows=2707 loops=3)
+                                             Sort Key: t.id
+                                             Sort Method: quicksort  Memory: 350kB
+                                             Worker 0:  Sort Method: quicksort  Memory: 341kB
+                                             Worker 1:  Sort Method: quicksort  Memory: 336kB
+                                             ->  Nested Loop  (cost=1.59..114242.35 rows=8 width=44) (actual time=297.043..6716.023 rows=2707 loops=3)
+                                                   ->  Nested Loop  (cost=1.30..114209.39 rows=8 width=48) (actual time=296.998..6680.022 rows=2733 loops=3)
+                                                         ->  Nested Loop  (cost=0.87..114022.65 rows=333 width=18) (actual time=296.100..5377.207 rows=2852 loops=3)
+                                                               ->  Nested Loop  (cost=0.43..113755.29 rows=553 width=24) (actual time=294.806..3468.438 rows=3969 loops=3)
+                                                                     ->  Parallel Seq Scan on userhistory uh  (cost=0.00..111329.70 rows=553 width=14) (actual time=293.806..2149.528 rows=3969 loops=3)
+                                                                           Filter: ((last_seen <= now()) AND (last_seen >= (now() - '30 days'::interval)))
+                                                                           Rows Removed by Filter: 1996661
+                                                                     ->  Index Only Scan using title_pkey on title t2  (cost=0.43..4.39 rows=1 width=10) (actual time=0.330..0.330 rows=1 loops=11908)
+                                                                           Index Cond: (id = (uh.title_id)::text)
+                                                                           Heap Fetches: 0
+                                                               ->  Index Scan using titleepisode_pkey on titleepisode te  (cost=0.43..0.48 rows=1 width=24) (actual time=0.479..0.479 rows=1 loops=11908)
+                                                                     Index Cond: ((title_id)::text = (t2.id)::text)
+                                                                     Filter: (season_number IS NOT NULL)
+                                                                     Rows Removed by Filter: 0
+                                                         ->  Index Scan using title_pkey on title t  (cost=0.43..0.56 rows=1 width=30) (actual time=0.454..0.454 rows=1 loops=8557)
+                                                               Index Cond: ((id)::text = (te.parent_title_id)::text)
+                                                               Filter: ((title_type)::text = 'tvSeries'::text)
+                                                               Rows Removed by Filter: 0
+                                                   ->  Index Scan using users_pkey on users u  (cost=0.29..4.12 rows=1 width=4) (actual time=0.011..0.011 rows=1 loops=8198)
+                                                         Index Cond: (id = uh.user_id)
+                                                         Filter: ((country_code)::text <> ALL ('{US,GB}'::text[]))
+                                                         Rows Removed by Filter: 0
+                                       ->  GroupAggregate  (cost=0.71..963172.39 rows=4216269 width=42) (actual time=1.179..13537.077 rows=9373270 loops=3)
+                                             Group Key: tg.title_id
+                                             ->  Nested Loop  (cost=0.71..834474.73 rows=15198860 width=17) (actual time=1.149..7309.562 rows=15190960 loops=3)
+                                                   ->  Index Only Scan using titlegenre_pkey on titlegenre tg  (cost=0.56..462079.46 rows=15198860 width=14) (actual time=1.068..2587.925 rows=15190960 loops=3)
+                                                         Heap Fetches: 0
+                                                   ->  Memoize  (cost=0.15..0.17 rows=1 width=11) (actual time=0.000..0.000 rows=1 loops=45572881)
+                                                         Cache Key: tg.genre_id
+                                                         Cache Mode: logical
+                                                         Hits: 15197335  Misses: 28  Evictions: 0  Overflows: 0  Memory Usage: 4kB
+                                                         Worker 0:  Hits: 15177685  Misses: 28  Evictions: 0  Overflows: 0  Memory Usage: 4kB
+                                                         Worker 1:  Hits: 15197777  Misses: 28  Evictions: 0  Overflows: 0  Memory Usage: 4kB
+                                                         ->  Index Scan using genre_pkey on genre g  (cost=0.14..0.16 rows=1 width=11) (actual time=0.004..0.004 rows=1 loops=84)
+                                                               Index Cond: (id = tg.genre_id)
+ Planning Time: 15.059 ms
+ JIT:
+   Functions: 148
+   Options: Inlining true, Optimization true, Expressions true, Deforming true
+   Timing: Generation 8.777 ms, Inlining 281.332 ms, Optimization 659.395 ms, Emission 503.129 ms, Total 1452.633 ms
+ Execution Time: 22903.190 ms
+(65 rows)
+

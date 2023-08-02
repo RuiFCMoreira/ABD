@@ -1,0 +1,65 @@
+explain analyze SELECT n.id,
+    n.primary_name,
+    date_part('year', NOW())::int - n.birth_year AS age,
+    count(*) AS roles
+FROM name n
+JOIN titlePrincipals tp ON tp.name_id = n.id
+JOIN titlePrincipalsCharacters tpc ON tpc.title_id = tp.title_id
+    AND tpc.name_id = tp.name_id
+JOIN category c ON c.id = tp.category_id
+JOIN title t ON t.id = tp.title_id
+WHERE t.start_year >= date_part('year', NOW())::int - 10
+    AND c.name = 'actress'
+    AND n.death_year IS NULL
+    AND t.title_type IN (
+        'movie', 'tvSeries', 'tvMiniSeries', 'tvMovie'
+    )
+GROUP BY n.id
+ORDER BY roles DESC
+LIMIT 100;
+                                                                                                     QUERY PLAN                                                                                                      
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Limit  (cost=1284459.98..1284460.00 rows=11 width=36) (actual time=35390.987..35474.184 rows=100 loops=1)
+   ->  Sort  (cost=1284459.98..1284460.00 rows=11 width=36) (actual time=34918.946..35002.136 rows=100 loops=1)
+         Sort Key: (count(*)) DESC
+         Sort Method: top-N heapsort  Memory: 38kB
+         ->  GroupAggregate  (cost=1284459.48..1284459.79 rows=11 width=36) (actual time=34617.982..34963.167 rows=183837 loops=1)
+               Group Key: n.id
+               ->  Sort  (cost=1284459.48..1284459.51 rows=11 width=28) (actual time=34617.919..34841.000 rows=396348 loops=1)
+                     Sort Key: n.id
+                     Sort Method: external merge  Disk: 14312kB
+                     ->  Gather  (cost=235307.21..1284459.29 rows=11 width=28) (actual time=11365.187..34138.639 rows=396348 loops=1)
+                           Workers Planned: 2
+                           Workers Launched: 2
+                           ->  Nested Loop  (cost=234307.21..1283458.19 rows=5 width=28) (actual time=11341.548..34293.391 rows=132116 loops=3)
+                                 ->  Nested Loop  (cost=234306.65..1283437.51 rows=5 width=20) (actual time=11339.981..23008.187 rows=132656 loops=3)
+                                       ->  Parallel Hash Join  (cost=234306.09..1044841.51 rows=89575 width=30) (actual time=11338.452..12006.648 rows=149480 loops=3)
+                                             Hash Cond: ((tp.title_id)::text = (t.id)::text)
+                                             ->  Hash Join  (cost=1.16..781764.71 rows=1941667 width=20) (actual time=0.645..7606.837 rows=3185892 loops=3)
+                                                   Hash Cond: (tp.category_id = c.id)
+                                                   ->  Parallel Seq Scan on titleprincipals tp  (cost=0.00..699000.00 rows=23300000 width=24) (actual time=0.503..5539.756 rows=18639969 loops=3)
+                                                   ->  Hash  (cost=1.15..1.15 rows=1 width=4) (actual time=0.074..0.076 rows=1 loops=3)
+                                                         Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                                                         ->  Seq Scan on category c  (cost=0.00..1.15 rows=1 width=4) (actual time=0.067..0.069 rows=1 loops=3)
+                                                               Filter: ((name)::text = 'actress'::text)
+                                                               Rows Removed by Filter: 11
+                                             ->  Parallel Hash  (cost=231026.22..231026.22 rows=188617 width=10) (actual time=2812.346..2812.347 rows=117416 loops=3)
+                                                   Buckets: 131072  Batches: 8  Memory Usage: 3136kB
+                                                   ->  Parallel Seq Scan on title t  (cost=0.00..231026.22 rows=188617 width=10) (actual time=234.203..2766.474 rows=117416 loops=3)
+                                                         Filter: (((title_type)::text = ANY ('{movie,tvSeries,tvMiniSeries,tvMovie}'::text[])) AND (start_year >= ((date_part('year'::text, now()))::integer - 10)))
+                                                         Rows Removed by Filter: 3156125
+                                       ->  Index Only Scan using titleprincipalscharacters_pkey on titleprincipalscharacters tpc  (cost=0.56..2.65 rows=1 width=20) (actual time=0.072..0.073 rows=1 loops=448441)
+                                             Index Cond: ((title_id = (tp.title_id)::text) AND (name_id = (tp.name_id)::text))
+                                             Heap Fetches: 0
+                                 ->  Index Scan using name_pkey on name n  (cost=0.56..4.14 rows=1 width=28) (actual time=0.084..0.084 rows=1 loops=397968)
+                                       Index Cond: ((id)::text = (tp.name_id)::text)
+                                       Filter: (death_year IS NULL)
+                                       Rows Removed by Filter: 0
+ Planning Time: 20.658 ms
+ JIT:
+   Functions: 104
+   Options: Inlining true, Optimization true, Expressions true, Deforming true
+   Timing: Generation 6.331 ms, Inlining 278.238 ms, Optimization 497.098 ms, Emission 376.184 ms, Total 1157.851 ms
+ Execution Time: 35838.055 ms
+(42 rows)
+

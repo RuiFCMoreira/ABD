@@ -1,0 +1,1188 @@
+mkdir: cannot create directory ‘transactional-results’: File exists
+Starting at 23:52:04
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.imdbBench:transactional:jar:1.0-SNAPSHOT
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 33, column 21
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-jar-plugin is missing. @ line 62, column 21
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36morg.imdbBench:transactional[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding transactional 1.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:2.5:clean[m [1m(default-clean)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/imdbBench/transactional/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module!
+[[1;34mINFO[m] Compiling 7 source files to /home/imdbBench/transactional/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /home/imdbBench/transactional/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:2.4:jar[m [1m(default-jar)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Building jar: /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.4.1:shade[m [1m(default)[m @ [36mtransactional[0;1m ---[m
+[[1;34mINFO[m] Including com.beust:jcommander:jar:1.82 in the shaded jar.
+[[1;34mINFO[m] Including org.postgresql:postgresql:jar:42.5.3 in the shaded jar.
+[[1;34mINFO[m] Including org.checkerframework:checker-qual:jar:3.5.0 in the shaded jar.
+[[1;34mINFO[m] Dependency-reduced POM written at: /home/imdbBench/transactional/dependency-reduced-pom.xml
+[[1;33mWARNING[m] checker-qual-3.5.0.jar, jcommander-1.82.jar, postgresql-42.5.3.jar, transactional-1.0-SNAPSHOT.jar define 1 overlapping resource: 
+[[1;33mWARNING[m]   - META-INF/MANIFEST.MF
+[[1;33mWARNING[m] maven-shade-plugin has detected that some class files are
+[[1;33mWARNING[m] present in two or more JARs. When this happens, only one
+[[1;33mWARNING[m] single version of the class is copied to the uber jar.
+[[1;33mWARNING[m] Usually this is not harmful and you can skip these warnings,
+[[1;33mWARNING[m] otherwise try to manually exclude artifacts based on
+[[1;33mWARNING[m] mvn dependency:tree -Ddetail=true and the above output.
+[[1;33mWARNING[m] See https://maven.apache.org/plugins/maven-shade-plugin/
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT.jar with /home/imdbBench/transactional/target/transactional-1.0-SNAPSHOT-shaded.jar
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  3.103 s
+[[1;34mINFO[m] Finished at: 2023-05-30T23:52:09Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+Running preparation script
+ALTER USER postgres WITH PASSWORD 'postgres'
+ALTER ROLE
+Running transactional-tests/idx_and_params.test.sql
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+23:59:09 - idx_and_params - 1 Clients 
+Took 25.1;0.039853579549800795;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+00:10:38 - idx_and_params - 4 Clients 
+Took 121.20833333333333;0.032998129321244414;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+00:22:07 - idx_and_params - 8 Clients 
+Took 220.85;0.03605148095758811;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+00:33:39 - idx_and_params - 16 Clients 
+Took 256.6125;0.06125807358754282;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+00:45:20 - idx_and_params - 24 Clients 
+Took 268.5;0.08799858488865611;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+00:56:52 - idx_and_params - 32 Clients 
+Took 263.8958333333333;0.12102903056946396;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+01:08:21 - idx_and_params - 48 Clients 
+Took 284.4291666666667;0.16725311563132297;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+01:19:48 - idx_and_params - 64 Clients 
+Took 281.975;0.22678853671148447;
+Running cleanup script
+drop index title_id_hash_idx;
+DROP INDEX
+drop index title_type_title_idx;
+DROP INDEX
+drop index start_year_title_idx;
+DROP INDEX
+drop index last_seen_uh;
+DROP INDEX
+drop index search_title;
+DROP INDEX
+drop index tid_region_titleAkas;
+DROP INDEX
+alter system set shared_buffers = '128MB';
+ALTER SYSTEM
+alter system set max_wal_size = "1GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Running transactional-tests/idx_params_wm.test.sql
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+01:31:29 - idx_params_wm - 1 Clients 
+Took 23.8625;0.04188984701222281;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+01:43:02 - idx_params_wm - 4 Clients 
+Took 131.87083333333334;0.03024316483967898;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+01:54:29 - idx_params_wm - 8 Clients 
+Took 233.175;0.03421811684789679;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+02:05:59 - idx_params_wm - 16 Clients 
+Took 258.7916666666667;0.06165704432363549;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+02:17:25 - idx_params_wm - 24 Clients 
+Took 266.3375;0.08993570359809765;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+02:28:51 - idx_params_wm - 32 Clients 
+Took 261.8541666666667;0.12195298520566474;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+02:40:20 - idx_params_wm - 48 Clients 
+Took 258.84583333333336;0.18380415600927194;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+-- for rateTitle
+create index title_id_hash_idx on userHistory (title_id);
+CREATE INDEX
+-- for getTitleFromType
+create index title_type_title_idx on title (title_type);
+CREATE INDEX
+create index start_year_title_idx on title (start_year);
+CREATE INDEX
+-- for getTitleFromPopular
+create index last_seen_uh on userHistory (last_seen);
+CREATE INDEX
+-- for searchTitleByName
+create index search_title on title using GIN (to_tsvector('english', primary_title));
+CREATE INDEX
+-- for getTitleNameInRegion
+create index tid_region_titleAkas on titleAkas (title_id, region);
+CREATE INDEX
+alter system set work_mem = '20MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+02:51:49 - idx_params_wm - 64 Clients 
+Took 290.425;0.21821338360807438;
+Running cleanup script
+drop index title_id_hash_idx;
+DROP INDEX
+drop index title_type_title_idx;
+DROP INDEX
+drop index start_year_title_idx;
+DROP INDEX
+drop index last_seen_uh;
+DROP INDEX
+drop index search_title;
+DROP INDEX
+drop index tid_region_titleAkas;
+DROP INDEX
+alter system set work_mem = '4MB';
+ALTER SYSTEM
+alter system set shared_buffers = '128MB';
+ALTER SYSTEM
+alter system set max_wal_size = "1GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Running transactional-tests/params.test.sql
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:01:18 - params - 1 Clients 
+Took 9.166666666666666;0.10955379214818182;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:10:37 - params - 4 Clients 
+Took 35.083333333333336;0.11399251776460807;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:19:55 - params - 8 Clients 
+Took 40.28333333333333;0.1979988038731899;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:29:10 - params - 16 Clients 
+Took 42.333333333333336;0.3790606404742126;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:38:38 - params - 24 Clients 
+Took 41.17916666666667;0.585259811212992;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:47:56 - params - 32 Clients 
+Took 42.958333333333336;0.7327483901613967;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+03:57:16 - params - 48 Clients 
+Took 44.97083333333333;1.02383834884527;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:06:46 - params - 64 Clients 
+Took 43.983333333333334;1.2767353207559682;
+Running cleanup script
+alter system set shared_buffers = '128MB';
+ALTER SYSTEM
+alter system set max_wal_size = "1GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Running transactional-tests/params_with_work_mem.test.sql
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:16:25 - params_with_work_mem - 1 Clients 
+Took 7.433333333333334;0.1354622683279148;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:25:48 - params_with_work_mem - 4 Clients 
+Took 32.1875;0.1244600205561165;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:35:09 - params_with_work_mem - 8 Clients 
+Took 42.9875;0.18591010000978966;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:44:30 - params_with_work_mem - 16 Clients 
+Took 43.983333333333334;0.3674950125596817;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+04:53:47 - params_with_work_mem - 24 Clients 
+Took 42.6625;0.5613964359112218;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+05:03:08 - params_with_work_mem - 32 Clients 
+Took 42.0625;0.7511676431956414;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+05:12:38 - params_with_work_mem - 48 Clients 
+Took 44.3125;1.0422969371641748;
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Running preparation script
+alter system set work_mem = '10MB';
+ALTER SYSTEM
+alter system set shared_buffers = '3.2GB';
+ALTER SYSTEM
+alter system set max_wal_size = "4GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+05:21:59 - params_with_work_mem - 64 Clients 
+Took 45.0625;1.2715313302184004;
+Running cleanup script
+alter system set work_mem = '4MB';
+ALTER SYSTEM
+alter system set shared_buffers = '128MB';
+ALTER SYSTEM
+alter system set max_wal_size = "1GB";
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Dropping DB
+DROP DATABASE
+Creating DB
+CREATE DATABASE
+Restoring DB
+Finished at 05:30:19

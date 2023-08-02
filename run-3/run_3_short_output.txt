@@ -1,0 +1,474 @@
+Starting at 09:26:47
+Running tests/akas_id_region_idx.test.sql
+Running preparation script
+-- 1
+create index akas_id_region_idx on titleAkas (title_id, region);
+CREATE INDEX
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:27:59 - akas_id_region_idx - query 1 - Run 1 
+Running query
+Took 9687.079ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:28:35 - akas_id_region_idx - query 1 - Run 2 
+Running query
+Took 9339.905ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:29:10 - akas_id_region_idx - query 1 - Run 3 
+Running query
+Took 9049.507ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:29:45 - akas_id_region_idx - query 1_opt - Run 1 
+Running query
+Took 8957.544ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:30:20 - akas_id_region_idx - query 1_opt - Run 2 
+Running query
+Took 9023.499ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:30:55 - akas_id_region_idx - query 1_opt - Run 3 
+Running query
+Took 9097.368ms
+Running cleanup script
+drop index akas_id_region_idx;
+DROP INDEX
+Running tests/default.test.sql
+Running preparation script
+-- *
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:31:30 - default - query 1 - Run 1 
+Running query
+Took 31808.444ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:32:28 - default - query 1 - Run 2 
+Running query
+Took 33050.454ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:33:27 - default - query 1 - Run 3 
+Running query
+Took 32462.970ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:34:26 - default - query 1_opt - Run 1 
+Running query
+Took 31808.323ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:35:24 - default - query 1_opt - Run 2 
+Running query
+Took 32311.108ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:36:22 - default - query 1_opt - Run 3 
+Running query
+Took 32419.765ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:37:20 - default - query 2 - Run 1 
+Running query
+Took 21292.661ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:38:08 - default - query 2 - Run 2 
+Running query
+Took 21042.526ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:38:54 - default - query 2 - Run 3 
+Running query
+Took 23714.505ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:39:47 - default - query 2_opt - Run 1 
+Running query
+Took 22376.549ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:40:38 - default - query 2_opt - Run 2 
+Running query
+Took 22235.015ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:41:26 - default - query 2_opt - Run 3 
+Running query
+Took 21041.751ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:42:13 - default - query 3 - Run 1 
+Running query
+Took 171560.278ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:45:31 - default - query 3 - Run 2 
+Running query
+Took 169212.853ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:48:46 - default - query 3 - Run 3 
+Running query
+Took 171169.547ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:52:04 - default - query 3_opt - Run 1 
+Running query
+Took 37146.889ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:53:07 - default - query 3_opt - Run 2 
+Running query
+Took 35838.055ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:54:10 - default - query 3_opt - Run 3 
+Running query
+Took 35744.173ms
+Running cleanup script
+Running tests/effective_cache_size.test.sql
+Running preparation script
+-- * 
+alter system set  effective_cache_size = "5.7GB" ;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:55:12 - effective_cache_size - query 1 - Run 1 
+Running query
+Took 34300.422ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:56:12 - effective_cache_size - query 1 - Run 2 
+Running query
+Took 36514.092ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:57:15 - effective_cache_size - query 1 - Run 3 
+Running query
+Took 34403.909ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:58:16 - effective_cache_size - query 1_opt - Run 1 
+Running query
+Took 34720.778ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+09:59:16 - effective_cache_size - query 1_opt - Run 2 
+Running query
+Took 34115.754ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:00:17 - effective_cache_size - query 1_opt - Run 3 
+Running query
+Took 35539.892ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:01:18 - effective_cache_size - query 2 - Run 1 
+Running query
+Took 22586.991ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:02:07 - effective_cache_size - query 2 - Run 2 
+Running query
+Took 21792.571ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:02:54 - effective_cache_size - query 2 - Run 3 
+Running query
+Took 22121.536ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:03:42 - effective_cache_size - query 2_opt - Run 1 
+Running query
+Took 20756.121ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:04:29 - effective_cache_size - query 2_opt - Run 2 
+Running query
+Took 21004.998ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:05:16 - effective_cache_size - query 2_opt - Run 3 
+Running query
+Took 20800.661ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:06:03 - effective_cache_size - query 3 - Run 1 
+Running query
+Took 167893.112ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:09:17 - effective_cache_size - query 3 - Run 2 
+Running query
+Took 162384.292ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:12:26 - effective_cache_size - query 3 - Run 3 
+Running query
+Took 165211.756ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:15:37 - effective_cache_size - query 3_opt - Run 1 
+Running query
+Took 35570.547ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:16:39 - effective_cache_size - query 3_opt - Run 2 
+Running query
+Took 36024.438ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:17:42 - effective_cache_size - query 3_opt - Run 3 
+Running query
+Took 35430.567ms
+Running cleanup script
+alter system set  effective_cache_size = "4GB" ;
+ALTER SYSTEM
+select pg_reload_conf();
+ pg_reload_conf 
+----------------
+ t
+(1 row)
+
+Running tests/genre_id_hash.test.sql
+Running preparation script
+-- 1 2
+create index genre_id_hash on genre using hash (id);
+CREATE INDEX
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:18:43 - genre_id_hash - query 1 - Run 1 
+Running query
+Took 23909.316ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:19:33 - genre_id_hash - query 1 - Run 2 
+Running query
+Took 25338.311ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:20:25 - genre_id_hash - query 1 - Run 3 
+Running query
+Took 24735.214ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:21:16 - genre_id_hash - query 1_opt - Run 1 
+Running query
+Took 33657.101ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:22:15 - genre_id_hash - query 1_opt - Run 2 
+Running query
+Took 33755.454ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:23:15 - genre_id_hash - query 1_opt - Run 3 
+Running query
+Took 33964.181ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:24:15 - genre_id_hash - query 2 - Run 1 
+Running query
+Took 39710.708ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:25:21 - genre_id_hash - query 2 - Run 2 
+Running query
+Took 41647.636ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:26:28 - genre_id_hash - query 2 - Run 3 
+Running query
+Took 40647.632ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:27:35 - genre_id_hash - query 2_opt - Run 1 
+Running query
+Took 39614.537ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:28:40 - genre_id_hash - query 2_opt - Run 2 
+Running query
+Took 39758.614ms
+Stopping postgres service
+Clearing system cache
+Restarting postgres service
+Postgres vacuum
+VACUUM
+10:29:46 - genre_id_hash - query 2_opt - Run 3 
+Running query
+Took 40002.815ms
+Running cleanup script
+drop index genre_id_hash;
+DROP INDEX
+Finished at 10:30:26

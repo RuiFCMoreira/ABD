@@ -1,0 +1,6 @@
+---
+- name: Stop GCP instances
+  hosts: localhost
+  connection: local
+  roles:
+    - role: gcp-shutdown

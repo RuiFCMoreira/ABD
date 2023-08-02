@@ -1,0 +1,7 @@
+collections:
+- community.google
+- google.cloud
+- community.docker # to use docker
+roles:  
+- name: geerlingguy.pip # to install docker python library
+- name: geerlingguy.docker # to install docker

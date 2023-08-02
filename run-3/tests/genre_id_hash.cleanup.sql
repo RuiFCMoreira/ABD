@@ -1,0 +1,1 @@
+drop index genre_id_hash;
